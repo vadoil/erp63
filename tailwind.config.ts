@@ -51,13 +51,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        graphite: {
-          DEFAULT: "hsl(var(--graphite))",
-          light: "hsl(var(--graphite-light))",
-        },
-        "yellow-glow": "hsl(var(--yellow-glow))",
+        "yellow-hover": "hsl(var(--yellow-hover))",
         "yellow-soft": "hsl(var(--yellow-soft))",
-        "surface-warm": "hsl(var(--surface-warm))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -71,8 +66,9 @@ export default {
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
+        xl: "1.75rem",
       },
       keyframes: {
         "accordion-down": {
