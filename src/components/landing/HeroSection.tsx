@@ -1,20 +1,7 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Eye, Settings, Zap, BarChart3, Warehouse, Factory, ShoppingCart, LineChart } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, BarChart3, Warehouse, Factory, ShoppingCart, LineChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import expertPhoto from "@/assets/expert-alexey.jpg";
-
-const painTabs = [
-  { pain: "Доработки бесконтрольны", solution: "Управление изменениями + архитектура" },
-  { pain: "Нет единой картины", solution: "Единый контур данных и отчётов" },
-  { pain: "Тормозит 1С", solution: "Оптимизация + правильная нагрузка" },
-];
-
-const bullets = [
-  { icon: Eye, label: "Прозрачность", desc: "Полная видимость финансов, склада и производства" },
-  { icon: Settings, label: "Управляемость", desc: "Контролируемые доработки и архитектура без хаоса" },
-  { icon: Zap, label: "Скорость", desc: "Быстрое закрытие периодов и обработка данных" },
-];
 
 const contours = [
   { icon: BarChart3, label: "Финансы" },
@@ -38,8 +25,6 @@ const fadeUp = {
 };
 
 const HeroSection = ({ onConsultation }: HeroSectionProps) => {
-  const [activeTab, setActiveTab] = useState(0);
-
   return (
     <section className="relative min-h-[94vh] flex items-center pt-16 overflow-hidden">
       {/* Glow gradients */}
@@ -100,73 +85,6 @@ const HeroSection = ({ onConsultation }: HeroSectionProps) => {
             >
               Показать похожие кейсы
             </Button>
-          </motion.div>
-
-          {/* Pain tabs */}
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={4} className="pt-3">
-            <div className="glass-card p-1.5 inline-flex gap-1 mb-4">
-              {painTabs.map((tab, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveTab(i)}
-                  className={`relative px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 ${
-                    activeTab === i
-                      ? "text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {activeTab === i && (
-                    <motion.div
-                      layoutId="pain-tab-bg"
-                      className="absolute inset-0 bg-primary rounded-xl shadow-sm"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{tab.pain}</span>
-                </button>
-              ))}
-            </div>
-            <div className="glass-card px-5 py-4 flex items-center gap-3 max-w-lg">
-              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                <ArrowRight className="h-4 w-4 text-primary" />
-              </div>
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="text-sm font-medium text-foreground"
-                >
-                  {painTabs[activeTab].solution}
-                </motion.p>
-              </AnimatePresence>
-            </div>
-          </motion.div>
-
-          {/* Bullets */}
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={5}
-            className="flex flex-wrap gap-5 pt-2">
-            {bullets.map((b, i) => {
-              const Icon = b.icon;
-              return (
-                <motion.div
-                  key={i}
-                  className="flex items-start gap-2.5 min-w-[140px]"
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="w-9 h-9 rounded-xl bg-yellow-soft flex items-center justify-center shrink-0">
-                    <Icon className="h-4 w-4 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-foreground leading-tight">{b.label}</p>
-                    <p className="text-xs text-muted-foreground leading-snug mt-0.5">{b.desc}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
           </motion.div>
         </div>
 
