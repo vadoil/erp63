@@ -1,16 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useRef } from "react";
+import Header from "@/components/landing/Header";
+import HeroSection from "@/components/landing/HeroSection";
+import ProblemsSection from "@/components/landing/ProblemsSection";
+import ServicesSection from "@/components/landing/ServicesSection";
+import IndustriesSection from "@/components/landing/IndustriesSection";
+import CasesSection from "@/components/landing/CasesSection";
+import StepsSection from "@/components/landing/StepsSection";
+import ExpertSection from "@/components/landing/ExpertSection";
+import ReviewsSection from "@/components/landing/ReviewsSection";
+import ContactSection from "@/components/landing/ContactSection";
+import Footer from "@/components/landing/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen">
+      <Header />
+      <HeroSection onConsultation={scrollToContact} />
+      <ProblemsSection />
+      <ServicesSection />
+      <IndustriesSection />
+      <CasesSection />
+      <StepsSection />
+      <ExpertSection />
+      <ReviewsSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
