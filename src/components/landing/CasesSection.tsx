@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import AnimatedSection from "./AnimatedSection";
+
 const cases = [
   {
     industry: "Производство / машиностроение",
@@ -34,24 +37,32 @@ const cases = [
 const CasesSection = () => (
   <section id="cases" className="section-padding">
     <div className="container">
-      <div className="text-center mb-16 max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Кейсы</h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">Реальные результаты наших проектов.</p>
-      </div>
+      <AnimatedSection>
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Наши <span className="text-primary">кейсы</span></h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">Реальные результаты наших проектов.</p>
+        </div>
+      </AnimatedSection>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cases.map((c, i) => (
-          <div key={i} className="glass-card-hover p-7 flex flex-col">
-            <span className="text-xs font-semibold text-foreground bg-yellow-soft px-3 py-1.5 rounded-full w-fit mb-5">
-              {c.industry}
-            </span>
-            <h3 className="font-bold text-foreground mb-3 leading-snug">{c.task}</h3>
-            <p className="text-sm text-muted-foreground mb-5 flex-1 leading-relaxed">{c.result}</p>
-            <div className="pt-4" style={{ borderTop: '1px solid rgba(15,23,42,0.06)' }}>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-semibold text-foreground">Стек:</span> {c.stack}
-              </p>
-            </div>
-          </div>
+          <AnimatedSection key={i} delay={i * 0.07}>
+            <motion.div
+              className="glass-card-hover p-7 flex flex-col h-full"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25 }}
+            >
+              <span className="text-xs font-semibold text-foreground bg-yellow-soft px-3 py-1.5 rounded-full w-fit mb-5">
+                {c.industry}
+              </span>
+              <h3 className="font-bold text-foreground mb-3 leading-snug">{c.task}</h3>
+              <p className="text-sm text-muted-foreground mb-5 flex-1 leading-relaxed">{c.result}</p>
+              <div className="pt-4 border-t border-border">
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-semibold text-foreground">Стек:</span> {c.stack}
+                </p>
+              </div>
+            </motion.div>
+          </AnimatedSection>
         ))}
       </div>
     </div>

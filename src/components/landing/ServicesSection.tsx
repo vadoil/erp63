@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import {
   Search, Settings, Wrench, Link2, RefreshCw, HeadphonesIcon, Gauge, GraduationCap, Database, BarChart3,
 } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 const services = [
   { icon: Search, title: "Предпроектное обследование", desc: "Экспресс-аудит процессов и ИТ-ландшафта. Обычно 2–4 недели.", result: "Дорожная карта и оценка бюджета" },
@@ -18,22 +20,30 @@ const services = [
 const ServicesSection = () => (
   <section id="services" className="section-padding">
     <div className="container">
-      <div className="text-center mb-16 max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Наши услуги</h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">Полный спектр экспертизы для автоматизации вашего бизнеса на&nbsp;1С.</p>
-      </div>
+      <AnimatedSection>
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Наши <span className="text-primary">услуги</span></h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">Полный спектр экспертизы для автоматизации вашего бизнеса на&nbsp;1С.</p>
+        </div>
+      </AnimatedSection>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {services.map((s, i) => {
           const Icon = s.icon;
           return (
-            <div key={i} className="glass-card-hover p-6">
-              <div className="w-12 h-12 rounded-2xl bg-yellow-soft flex items-center justify-center mb-5">
-                <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
-              </div>
-              <h3 className="font-bold mb-2 text-foreground">{s.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>
-              <p className="text-xs font-semibold text-primary">→ {s.result}</p>
-            </div>
+            <AnimatedSection key={i} delay={i * 0.05}>
+              <motion.div
+                className="glass-card-hover p-6 h-full"
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25 }}
+              >
+                <div className="w-12 h-12 rounded-2xl bg-yellow-soft flex items-center justify-center mb-5">
+                  <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-bold mb-2 text-foreground">{s.title}</h3>
+                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>
+                <p className="text-xs font-semibold text-primary">→ {s.result}</p>
+              </motion.div>
+            </AnimatedSection>
           );
         })}
       </div>
