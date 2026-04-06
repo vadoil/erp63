@@ -29,28 +29,32 @@ const items = [
 ];
 
 const ProblemsSection = () => (
-  <section id="problems" className="section-padding bg-surface-warm">
+  <section id="problems" className="section-padding">
     <div className="container">
-      <div className="text-center mb-14 max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+      <div className="text-center mb-16 max-w-2xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
           Проблемы → <span className="text-primary">Решения</span>
         </h2>
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-lg leading-relaxed">
           Знаем боли бизнеса изнутри и&nbsp;превращаем их&nbsp;в&nbsp;системные решения на&nbsp;1С/ERP.
         </p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {items.map((item, i) => (
-          <div key={i} className="bg-card rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow group">
-            <div className="flex items-start gap-3 mb-4">
-              <AlertTriangle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
-              <p className="text-sm font-semibold text-destructive/90">{item.pain}</p>
+          <div key={i} className="glass-card-hover p-7">
+            <div className="flex items-start gap-3 mb-5">
+              <div className="w-8 h-8 rounded-lg bg-destructive/10 flex items-center justify-center shrink-0">
+                <AlertTriangle className="h-4 w-4 text-destructive" />
+              </div>
+              <p className="text-sm font-semibold text-destructive/80">{item.pain}</p>
             </div>
             <div className="flex items-start gap-3 mb-3">
-              <TrendingUp className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <TrendingUp className="h-4 w-4 text-primary" />
+              </div>
               <h3 className="font-bold text-foreground">{item.solution}</h3>
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+            <p className="text-muted-foreground text-sm leading-relaxed pl-11">{item.desc}</p>
           </div>
         ))}
       </div>

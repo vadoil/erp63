@@ -17,18 +17,21 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <Header />
-      <HeroSection onConsultation={scrollToContact} />
-      <ProblemsSection />
-      <ServicesSection />
-      <IndustriesSection />
-      <CasesSection />
-      <StepsSection />
-      <ExpertSection />
-      <ReviewsSection />
-      <ContactSection />
-      <Footer />
+    <div className="min-h-screen page-glow relative">
+      <div className="noise-overlay" />
+      <div className="relative z-10">
+        <Header />
+        <HeroSection onConsultation={scrollToContact} />
+        <ProblemsSection />
+        <ServicesSection />
+        <IndustriesSection />
+        <CasesSection />
+        <StepsSection />
+        <ExpertSection />
+        <ReviewsSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 };

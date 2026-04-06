@@ -17,23 +17,28 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50" style={{
+      background: 'rgba(247, 248, 250, 0.72)',
+      backdropFilter: 'blur(24px)',
+      WebkitBackdropFilter: 'blur(24px)',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+    }}>
       <div className="container flex items-center justify-between h-16">
-        <a href="#" className="font-extrabold text-xl text-foreground">
+        <a href="#" className="font-extrabold text-xl tracking-tight text-foreground">
           ERP<span className="text-primary">Самара</span>
         </a>
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-7">
           {navItems.map((item) => (
             <a key={item.href} href={item.href} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               {item.label}
             </a>
           ))}
         </nav>
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-4">
           <a href="tel:+78460000000" className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
             <Phone className="h-4 w-4" /> +7 (846) 000-00-00
           </a>
-          <Button size="sm" asChild>
+          <Button size="sm" className="rounded-full px-5 font-bold" asChild>
             <a href="#contact">Оставить заявку</a>
           </Button>
         </div>
@@ -42,14 +47,18 @@ const Header = () => {
         </button>
       </div>
       {open && (
-        <div className="lg:hidden bg-card border-t border-border">
+        <div style={{
+          background: 'rgba(247, 248, 250, 0.92)',
+          backdropFilter: 'blur(24px)',
+          borderTop: '1px solid rgba(15, 23, 42, 0.06)',
+        }}>
           <nav className="container py-4 space-y-3">
             {navItems.map((item) => (
               <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="block text-sm font-medium text-muted-foreground hover:text-foreground">
                 {item.label}
               </a>
             ))}
-            <Button size="sm" className="w-full mt-2" asChild>
+            <Button size="sm" className="w-full mt-2 rounded-full font-bold" asChild>
               <a href="#contact" onClick={() => setOpen(false)}>Оставить заявку</a>
             </Button>
           </nav>
