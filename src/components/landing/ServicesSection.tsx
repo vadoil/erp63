@@ -18,20 +18,20 @@ const services = [
 const ServicesSection = () => (
   <section id="services" className="section-padding">
     <div className="container">
-      <div className="text-center mb-14 max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Наши услуги</h2>
-        <p className="text-muted-foreground text-lg">Полный спектр экспертизы для автоматизации вашего бизнеса на&nbsp;1С.</p>
+      <div className="text-center mb-16 max-w-2xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Наши услуги</h2>
+        <p className="text-muted-foreground text-lg leading-relaxed">Полный спектр экспертизы для автоматизации вашего бизнеса на&nbsp;1С.</p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {services.map((s, i) => {
           const Icon = s.icon;
           return (
-            <div key={i} className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 hover:shadow-lg transition-all group">
-              <div className="w-12 h-12 rounded-lg bg-yellow-soft flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <Icon className="h-6 w-6 text-primary" />
+            <div key={i} className="glass-card-hover p-6">
+              <div className="w-12 h-12 rounded-2xl bg-yellow-soft flex items-center justify-center mb-5">
+                <Icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
               </div>
               <h3 className="font-bold mb-2 text-foreground">{s.title}</h3>
-              <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{s.desc}</p>
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{s.desc}</p>
               <p className="text-xs font-semibold text-primary">→ {s.result}</p>
             </div>
           );
