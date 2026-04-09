@@ -65,30 +65,30 @@ const ContactSection = () => {
         </AnimatedSection>
         <div className="grid lg:grid-cols-2 gap-12">
           <AnimatedSection>
-            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="glass-card p-5 sm:p-8 space-y-4 sm:space-y-5">
               {/* Value proposition inside form */}
               <div className="flex items-center gap-3 p-4 rounded-xl bg-yellow-soft/50 mb-2">
                 <Gift className="h-5 w-5 text-primary shrink-0" />
                 <p className="text-sm text-foreground font-medium">Бонус: чек-лист «10 ошибок при внедрении ERP» — пришлём после заявки</p>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Имя *</label>
-                  <Input placeholder="Ваше имя" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} maxLength={100} className="rounded-xl bg-background/60" />
+                  <Input placeholder="Ваше имя" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} maxLength={100} className="rounded-xl bg-background/60 w-full" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Телефон *</label>
-                  <Input placeholder="+7 (___) ___-__-__" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} maxLength={20} className="rounded-xl bg-background/60" />
+                  <Input placeholder="+7 (___) ___-__-__" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} maxLength={20} className="rounded-xl bg-background/60 w-full" />
                 </div>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Компания</label>
-                  <Input placeholder="Название компании" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} maxLength={100} className="rounded-xl bg-background/60" />
+                  <Input placeholder="Название компании" value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} maxLength={100} className="rounded-xl bg-background/60 w-full" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Должность</label>
-                  <Input placeholder="Ваша должность" value={form.position} onChange={(e) => setForm({ ...form, position: e.target.value })} maxLength={100} className="rounded-xl bg-background/60" />
+                  <Input placeholder="Ваша должность" value={form.position} onChange={(e) => setForm({ ...form, position: e.target.value })} maxLength={100} className="rounded-xl bg-background/60 w-full" />
                 </div>
               </div>
               <div>

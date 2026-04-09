@@ -13,7 +13,7 @@ const UrgencyBanner = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="glass-card p-8 md:p-12 text-center max-w-4xl mx-auto relative overflow-hidden"
+        className="glass-card p-5 sm:p-8 md:p-12 text-center max-w-4xl mx-auto relative overflow-hidden"
       >
         {/* Decorative gradient blob */}
         <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full pointer-events-none" style={{
