@@ -22,8 +22,11 @@ const ServicesSection = () => (
     <div className="container">
       <AnimatedSection>
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Наши <span className="text-primary">услуги</span></h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">Полный спектр экспертизы для автоматизации вашего бизнеса на&nbsp;1С.</p>
+          <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wider">Что мы делаем</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
+            Полный цикл — от аудита до <span className="text-primary">результата</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">Не «просто настроим 1С». Построим систему, которая окупается.</p>
         </div>
       </AnimatedSection>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

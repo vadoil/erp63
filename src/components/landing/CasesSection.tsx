@@ -39,8 +39,11 @@ const CasesSection = () => (
     <div className="container">
       <AnimatedSection>
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Наши <span className="text-primary">кейсы</span></h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">Реальные результаты наших проектов.</p>
+          <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wider">Доказательства</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
+            Результаты, которые <span className="text-primary">можно измерить</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">Не обещания — факты из реальных проектов.</p>
         </div>
       </AnimatedSection>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
