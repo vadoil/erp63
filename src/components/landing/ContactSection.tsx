@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -54,15 +54,23 @@ const ContactSection = () => {
       <div className="container">
         <AnimatedSection>
           <div className="text-center mb-16 max-w-2xl mx-auto">
+            <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wider">Последний шаг</p>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
-              Обсудим ваш <span className="text-primary">проект</span>
+              Получите <span className="text-primary">бесплатный аудит</span> за 30 минут
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">Оставьте заявку — ответим в&nbsp;течение 2&nbsp;рабочих часов.</p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              Оставьте заявку — разберём вашу ситуацию и покажем, где теряются деньги.
+            </p>
           </div>
         </AnimatedSection>
         <div className="grid lg:grid-cols-2 gap-12">
           <AnimatedSection>
             <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
+              {/* Value proposition inside form */}
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-yellow-soft/50 mb-2">
+                <Gift className="h-5 w-5 text-primary shrink-0" />
+                <p className="text-sm text-foreground font-medium">Бонус: чек-лист «10 ошибок при внедрении ERP» — пришлём после заявки</p>
+              </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Имя *</label>
@@ -84,8 +92,8 @@ const ContactSection = () => {
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Комментарий</label>
-                <Textarea placeholder="Расскажите о задаче..." value={form.comment} onChange={(e) => setForm({ ...form, comment: e.target.value })} rows={4} maxLength={1000} className="rounded-xl bg-background/60" />
+                <label className="text-sm font-medium text-foreground mb-1.5 block">Что болит?</label>
+                <Textarea placeholder="Расскажите: что не работает, чего не хватает…" value={form.comment} onChange={(e) => setForm({ ...form, comment: e.target.value })} rows={4} maxLength={1000} className="rounded-xl bg-background/60" />
               </div>
               <div className="flex items-start gap-2">
                 <Checkbox id="agree" checked={agreed} onCheckedChange={(v) => setAgreed(v === true)} className="mt-0.5" />
@@ -94,8 +102,9 @@ const ContactSection = () => {
                 </label>
               </div>
               <Button type="submit" size="lg" className="w-full text-base font-bold py-6 rounded-full shadow-lg group">
-                Отправить заявку <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                Получить бесплатный аудит <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
+              <p className="text-xs text-center text-muted-foreground">Ответим в течение 2 рабочих часов. Без спама.</p>
             </form>
           </AnimatedSection>
 

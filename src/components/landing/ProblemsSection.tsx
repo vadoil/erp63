@@ -51,21 +51,21 @@ const ProblemsSection = () => {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="problems" className="section-padding">
+    <section id="problems" className="section-padding !pt-10">
       <div className="container">
         <AnimatedSection>
           <div className="text-center mb-14 max-w-2xl mx-auto">
+            <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wider">Знакомая ситуация?</p>
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
-              Проблемы → <span className="text-primary">Решения</span>
+              Эти проблемы <span className="text-primary">стоят вам денег</span> каждый день
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Знаем боли бизнеса изнутри и&nbsp;превращаем их&nbsp;в&nbsp;системные решения на&nbsp;1С/ERP.
+              Выберите свою боль — покажем, как решаем её системно.
             </p>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.15}>
-          {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             {items.map((item, i) => (
               <button
@@ -82,7 +82,6 @@ const ProblemsSection = () => {
             ))}
           </div>
 
-          {/* Content */}
           <div className="glass-card p-0 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
@@ -93,7 +92,6 @@ const ProblemsSection = () => {
                 transition={{ duration: 0.35, ease: "easeInOut" }}
                 className="grid lg:grid-cols-2 gap-0"
               >
-                {/* Image */}
                 <div className="relative h-64 lg:h-auto min-h-[320px] overflow-hidden">
                   <img
                     src={items[active].image}
@@ -106,7 +104,6 @@ const ProblemsSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/10" />
                 </div>
 
-                {/* Text */}
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-8 h-8 rounded-xl bg-destructive/10 flex items-center justify-center">

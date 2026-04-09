@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const reviews = [
@@ -35,8 +35,11 @@ const ReviewsSection = () => (
     <div className="container">
       <AnimatedSection>
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Отзывы <span className="text-primary">клиентов</span></h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">Что говорят руководители о&nbsp;наших проектах.</p>
+          <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wider">Социальное доказательство</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
+            Нам доверяют <span className="text-primary">руководители</span>
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">Реальные отзывы от людей, принимающих решения.</p>
         </div>
       </AnimatedSection>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

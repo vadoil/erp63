@@ -1,7 +1,7 @@
-import { useRef } from "react";
 import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import ProblemsSection from "@/components/landing/ProblemsSection";
+import LeadCapture from "@/components/landing/LeadCapture";
 import ServicesSection from "@/components/landing/ServicesSection";
 import IndustriesSection from "@/components/landing/IndustriesSection";
 import CasesSection from "@/components/landing/CasesSection";
@@ -23,9 +23,28 @@ const Index = () => {
         <Header />
         <HeroSection onConsultation={scrollToContact} />
         <ProblemsSection />
+
+        {/* AIDA: mid-page lead capture after showing problems */}
+        <div className="container pb-10">
+          <LeadCapture
+            headline="Узнайте, сколько вы теряете без ERP"
+            subtext="Оставьте номер — проведём экспресс-диагностику бесплатно"
+          />
+        </div>
+
         <ServicesSection />
         <IndustriesSection />
         <CasesSection />
+
+        {/* AIDA: second lead capture after social proof */}
+        <div className="container pb-10">
+          <LeadCapture
+            headline="Готовы обсудить ваш проект?"
+            subtext="30-минутная консультация с архитектором ERP — бесплатно"
+            variant="full"
+          />
+        </div>
+
         <StepsSection />
         <ExpertSection />
         <ReviewsSection />

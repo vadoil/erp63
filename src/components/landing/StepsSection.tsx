@@ -19,10 +19,11 @@ const StepsSection = () => (
     <div className="container relative">
       <AnimatedSection>
         <div className="text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wider">Прозрачный процесс</p>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
-            Как мы <span className="text-primary">работаем</span>
+            6 шагов к <span className="text-primary">работающей ERP</span>
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">От первого звонка до стабильной работы системы — прозрачный процесс.</p>
+          <p className="text-muted-foreground text-lg leading-relaxed">Вы знаете, что происходит на каждом этапе. Без сюрпризов.</p>
         </div>
       </AnimatedSection>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
