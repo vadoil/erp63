@@ -13,6 +13,7 @@ import ReviewsSection from "@/components/landing/ReviewsSection";
 import FAQSection from "@/components/landing/FAQSection";
 import ContactSection from "@/components/landing/ContactSection";
 import Footer from "@/components/landing/Footer";
+import FloatingAssistant from "@/components/landing/FloatingAssistant";
 
 const Index = () => {
   const scrollToContact = () => {
@@ -57,6 +58,7 @@ const Index = () => {
         <ContactSection />
         <Footer />
       </div>
+      <FloatingAssistant />
     </div>
   );
 };

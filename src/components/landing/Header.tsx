@@ -35,8 +35,8 @@ const Header = () => {
           ))}
         </nav>
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+78460000000" className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
-            <Phone className="h-4 w-4" /> +7 (846) 000-00-00
+          <a href="tel:+79966194020" className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors">
+            <Phone className="h-4 w-4" /> +7 (996) 619-40-20
           </a>
           <Button size="sm" className="rounded-full px-5 font-bold" asChild>
             <a href="#contact">Оставить заявку</a>

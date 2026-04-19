@@ -112,8 +112,8 @@ const ContactSection = () => {
             <div className="space-y-8">
               <div className="space-y-6">
                 {[
-                  { icon: Phone, label: "Телефон", value: "+7 (846) 000-00-00", href: "tel:+78460000000" },
-                  { icon: Mail, label: "Email", value: "info@erp-samara.ru", href: "mailto:info@erp-samara.ru" },
+                  { icon: Phone, label: "Телефон", value: "+7 (996) 619-40-20", href: "tel:+79966194020" },
+                  { icon: Mail, label: "Email", value: "alex@advolodkin.ru", href: "mailto:alex@advolodkin.ru" },
                   { icon: MapPin, label: "Адрес", value: "г. Самара, ул. Примерная, д. 1, офис 100" },
                   { icon: Clock, label: "Время ответа", value: "В течение 2 рабочих часов" },
                 ].map((item, i) => {

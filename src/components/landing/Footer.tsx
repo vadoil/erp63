@@ -22,8 +22,9 @@ const Footer = () => (
         <div>
           <h4 className="font-bold text-foreground mb-3 text-sm">Контакты</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>+7 (846) 000-00-00</li>
-            <li>info@erp-samara.ru</li>
+            <li><a href="tel:+79966194020" className="hover:text-primary transition-colors">+7 (996) 619-40-20</a></li>
+            <li><a href="mailto:alex@advolodkin.ru" className="hover:text-primary transition-colors">alex@advolodkin.ru</a></li>
+            <li><a href="https://t.me/Allert9" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Telegram: @Allert9</a></li>
             <li>г. Самара</li>
           </ul>
         </div>
