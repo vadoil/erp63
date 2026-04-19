@@ -220,30 +220,44 @@ const HeroSection = ({ onConsultation }: HeroSectionProps) => {
             50+ внедрений · 15 лет экспертизы
           </motion.div>
 
-          {/* Rotating headline */}
-          <div className="min-h-[7rem] md:min-h-[8rem]">
+          {/* Static H1 — main site identity */}
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={1}
+            className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.05] tracking-tight text-foreground"
+          >
+            Внедрение <span className="text-primary">1С:ERP</span> под&nbsp;ключ
+            <span className="block text-xl md:text-2xl lg:text-[1.6rem] font-bold text-muted-foreground mt-2">
+              для среднего и крупного бизнеса
+            </span>
+          </motion.h1>
+
+          {/* Rotating sub-headline (smaller, supporting) */}
+          <div className="min-h-[5.5rem] md:min-h-[6rem]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.5 }}
               >
-                <h1 className="text-3xl md:text-5xl lg:text-[3.25rem] font-extrabold leading-[1.1] tracking-tight text-foreground">
+                <h2 className="text-xl md:text-2xl font-extrabold leading-tight tracking-tight text-foreground">
                   {slide.headline}{" "}
                   <span className="relative inline-block">
                     <span className="text-primary">{slide.highlight}</span>
                     <motion.span
-                      className="absolute bottom-0.5 left-0 w-full h-3 bg-primary/15 -z-10 rounded-sm"
+                      className="absolute bottom-0.5 left-0 w-full h-2.5 bg-primary/15 -z-10 rounded-sm"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: 1 }}
                       transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
                       style={{ transformOrigin: "left" }}
                     />
                   </span>
-                </h1>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-3 max-w-xl">
+                </h2>
+                <p className="text-base text-muted-foreground leading-relaxed mt-2 max-w-xl">
                   {slide.sub}
                 </p>
               </motion.div>
