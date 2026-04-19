@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Gift } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Gift, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import AnimatedSection from "./AnimatedSection";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [submitted, setSubmitted] = useState(false);
   const [agreed, setAgreed] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", company: "", position: "", comment: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreed) {
       toast({ title: "Необходимо согласие", description: "Пожалуйста, подтвердите согласие на обработку данных.", variant: "destructive" });
@@ -24,7 +26,19 @@ const ContactSection = () => {
       toast({ title: "Заполните обязательные поля", description: "Имя и телефон обязательны.", variant: "destructive" });
       return;
     }
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      const { error } = await supabase.functions.invoke("submit-lead", {
+        body: { ...form, source: "contact-form" },
+      });
+      if (error) throw error;
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Не удалось отправить", description: "Попробуйте ещё раз или позвоните +7 996 619-40-20.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -101,8 +115,8 @@ const ContactSection = () => {
                   Согласен на обработку персональных данных в&nbsp;соответствии с&nbsp;политикой конфиденциальности.
                 </label>
               </div>
-              <Button type="submit" size="lg" className="w-full text-base font-bold py-6 rounded-full shadow-lg group">
-                Получить бесплатный аудит <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <Button type="submit" disabled={loading} size="lg" className="w-full text-base font-bold py-6 rounded-full shadow-lg group">
+                {loading ? <><Loader2 className="mr-2 h-5 w-5 animate-spin" />Отправляем заявку…</> : <>Получить бесплатный аудит <Send className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" /></>}
               </Button>
               <p className="text-xs text-center text-muted-foreground">Ответим в течение 2 рабочих часов. Без спама.</p>
             </form>
