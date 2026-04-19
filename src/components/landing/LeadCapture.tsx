@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield } from "lucide-react";
+import { ArrowRight, Shield, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import AnimatedSection from "./AnimatedSection";
 
 interface LeadCaptureProps {
@@ -17,15 +18,32 @@ const LeadCapture = ({ headline, subtext, variant = "compact" }: LeadCaptureProp
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!phone.trim()) {
       toast({ title: "Введите телефон", variant: "destructive" });
       return;
     }
-    setSent(true);
-    toast({ title: "Заявка отправлена!", description: "Свяжемся в течение 2 часов." });
+    setLoading(true);
+    try {
+      const { error } = await supabase.functions.invoke("submit-lead", {
+        body: {
+          name: name.trim() || "Не указано",
+          phone: phone.trim(),
+          source: `lead-capture (${variant})`,
+        },
+      });
+      if (error) throw error;
+      setSent(true);
+      toast({ title: "Заявка отправлена!", description: "Свяжемся в течение 2 часов." });
+    } catch (err) {
+      console.error(err);
+      toast({ title: "Не удалось отправить", description: "Попробуйте ещё раз или позвоните нам.", variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (sent) {
@@ -61,9 +79,8 @@ const LeadCapture = ({ headline, subtext, variant = "compact" }: LeadCaptureProp
               className="rounded-full bg-background/60 h-12 flex-1"
               maxLength={20}
             />
-            <Button type="submit" size="lg" className="rounded-full font-bold h-12 px-8 group whitespace-nowrap">
-              Получить консультацию
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <Button type="submit" disabled={loading} size="lg" className="rounded-full font-bold h-12 px-8 group whitespace-nowrap">
+              {loading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" />Отправляем…</> : <>Получить консультацию<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></>}
             </Button>
           </div>
         </form>
