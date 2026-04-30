@@ -13,6 +13,9 @@ jobs:
       VPS_USER: ${{ secrets.VPS_USER }}
       VPS_PORT: ${{ secrets.VPS_PORT }}
       VPS_PATH: ${{ secrets.VPS_PATH }}
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://bnrvlbufkodtawchbkuq.supabase.co' }}
+      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJucnZsYnVma29kdGF3Y2hia3VxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY1ODg1NzcsImV4cCI6MjA5MjE2NDU3N30.z1_HGtqxK6qzi6Y-qrCCW3pIt_kC-xXjEFimZceg6SY' }}
+      VITE_SUPABASE_PROJECT_ID: ${{ secrets.VITE_SUPABASE_PROJECT_ID || 'bnrvlbufkodtawchbkuq' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,10 +48,6 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
-          VITE_SUPABASE_PROJECT_ID: ${{ secrets.VITE_SUPABASE_PROJECT_ID }}
         run: bun run build
 
       - name: Setup SSH
@@ -63,7 +62,7 @@ jobs:
       - name: Deploy with rsync
         run: |
           PORT="${VPS_PORT:-22}"
-          rsync -avz --delete \
+          rsync -avz --delete --no-times --no-perms --omit-dir-times \
             -e "ssh -i ~/.ssh/id_ed25519 -p $PORT -o StrictHostKeyChecking=yes" \
             dist/ \
             "$VPS_USER@$VPS_HOST:$VPS_PATH"
